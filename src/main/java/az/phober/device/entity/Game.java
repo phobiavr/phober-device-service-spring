@@ -1,4 +1,4 @@
-package az.phober.entity;
+package az.phober.device.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

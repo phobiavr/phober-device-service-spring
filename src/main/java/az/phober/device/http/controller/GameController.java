@@ -1,9 +1,9 @@
-package az.phober.http.controller;
+package az.phober.device.http.controller;
 
-import az.phober.entity.Game;
-import az.phober.exception.ResourceNotFoundException;
-import az.phober.http.dto.GameDTO;
-import az.phober.repository.GameRepository;
+import az.phober.device.entity.Game;
+import az.phober.device.exception.ResourceNotFoundException;
+import az.phober.device.repository.GameRepository;
+import az.phober.device.http.dto.GameDTO;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

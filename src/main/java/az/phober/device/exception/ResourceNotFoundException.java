@@ -1,4 +1,4 @@
-package az.phober.exception;
+package az.phober.device.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;

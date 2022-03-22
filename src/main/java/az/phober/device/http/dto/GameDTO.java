@@ -1,4 +1,4 @@
-package az.phober.http.dto;
+package az.phober.device.http.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;

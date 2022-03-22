@@ -1,11 +1,9 @@
-package az.phober.repository;
+package az.phober.device.repository;
 
-import az.phober.entity.Game;
+import az.phober.device.entity.Game;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
-
-import java.util.List;
 
 public interface GameRepository extends JpaRepository<Game, Long> {
     Page<Game> findAll(Pageable pageable);
