@@ -1,8 +1,10 @@
 package az.phober.http.controller;
 
 import az.phober.entity.Game;
+import az.phober.exception.ResourceNotFoundException;
 import az.phober.http.dto.GameDTO;
 import az.phober.repository.GameRepository;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
@@ -10,8 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.persistence.EntityNotFoundException;
-
+@Tag(name = "Games")
 @RestController
 public class GameController {
     private final GameRepository repository;
@@ -44,7 +45,7 @@ public class GameController {
     @GetMapping("/games/{id}")
     public ResponseEntity<?> getAll(@PathVariable Long id) {
         GameDTO dto = repository.findById(id).map(GameController::entityToDTO)
-                .orElseThrow(EntityNotFoundException::new);
+                .orElseThrow(ResourceNotFoundException::new);
 
         return ResponseEntity.ok(dto);
     }
