@@ -30,11 +30,17 @@ public class GameDTO {
 
     private List<GenreDTO> genres;
 
+    private List<DeviceDTO> devices;
+
     public static GameDTO dtoMapper(Game entity) {
         String videoUrl = Game.VIDEO_URL_PREFIX.concat(entity.getVideo());
 
         List<GenreDTO> genres = !entity.getGenres().isEmpty() ?
                 entity.getGenres().stream().map(GenreDTO::dtoMapper).collect(Collectors.toList()) :
+                Collections.emptyList();
+
+        List<DeviceDTO> devices = !entity.getDevices().isEmpty() ?
+                entity.getDevices().stream().map(DeviceDTO::dtoMapper).collect(Collectors.toList()) :
                 Collections.emptyList();
 
         return new GameDTO(
@@ -46,6 +52,7 @@ public class GameDTO {
                 entity.getRating(),
                 entity.getMultiplayer(),
                 null,
-                genres);
+                genres,
+                devices);
     }
 }
