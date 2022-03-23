@@ -19,7 +19,7 @@ import javax.sql.DataSource;
 @Configuration
 @EnableTransactionManagement
 @EnableJpaRepositories(
-        entityManagerFactoryRef = "entityManagerFactory",
+        entityManagerFactoryRef = "deviceManagerFactory",
         basePackages = {"az.phober.device"}
 )
 public class DeviceDatabaseConfig {
@@ -32,9 +32,9 @@ public class DeviceDatabaseConfig {
     }
 
     @Primary
-    @Bean(name = "entityManagerFactory")
+    @Bean(name = "deviceManagerFactory")
     public LocalContainerEntityManagerFactoryBean
-    entityManagerFactory(
+    deviceManagerFactory(
             EntityManagerFactoryBuilder builder,
             @Qualifier("dataSource") DataSource dataSource
     ) {
@@ -47,9 +47,9 @@ public class DeviceDatabaseConfig {
     @Primary
     @Bean(name = "transactionManager")
     public PlatformTransactionManager transactionManager(
-            @Qualifier("entityManagerFactory") EntityManagerFactory
-                    entityManagerFactory
+            @Qualifier("deviceManagerFactory") EntityManagerFactory
+                    deviceManagerFactory
     ) {
-        return new JpaTransactionManager(entityManagerFactory);
+        return new JpaTransactionManager(deviceManagerFactory);
     }
 }

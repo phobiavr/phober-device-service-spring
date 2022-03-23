@@ -14,6 +14,8 @@ import java.util.Date;
 @Entity
 @Table(name = "games")
 public class Game {
+    public static String MODEL_TYPE = "App\\Models\\Game";
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
