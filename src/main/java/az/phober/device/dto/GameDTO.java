@@ -2,12 +2,12 @@ package az.phober.device.dto;
 
 import az.phober.device.entity.Game;
 import az.phober.media.MediaDTO;
-import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
-import java.util.Date;
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @AllArgsConstructor
 @Data
@@ -28,8 +28,14 @@ public class GameDTO {
 
     private List<MediaDTO> media;
 
+    private List<GenreDTO> genres;
+
     public static GameDTO dtoMapper(Game entity) {
         String videoUrl = Game.VIDEO_URL_PREFIX.concat(entity.getVideo());
+
+        List<GenreDTO> genres = !entity.getGenres().isEmpty() ?
+                entity.getGenres().stream().map(GenreDTO::dtoMapper).collect(Collectors.toList()) :
+                Collections.emptyList();
 
         return new GameDTO(
                 entity.getId(),
@@ -39,6 +45,7 @@ public class GameDTO {
                 entity.getDescription(),
                 entity.getRating(),
                 entity.getMultiplayer(),
-                null);
+                null,
+                genres);
     }
 }
