@@ -18,7 +18,7 @@ public class GameDTO {
 
     private String slug;
 
-    private String video;
+    private String videoUrl;
 
     private String description;
 
@@ -26,25 +26,19 @@ public class GameDTO {
 
     private Boolean multiplayer;
 
-    @JsonFormat(pattern = "yyyy-MM-dd")
-    private Date updatedAt;
-
-    @JsonFormat(pattern = "yyyy-MM-dd")
-    private Date createdAt;
-
     private List<MediaDTO> media;
 
     public static GameDTO dtoMapper(Game entity) {
+        String videoUrl = Game.VIDEO_URL_PREFIX.concat(entity.getVideo());
+
         return new GameDTO(
                 entity.getId(),
                 entity.getName(),
                 entity.getSlug(),
-                entity.getVideo(),
+                videoUrl,
                 entity.getDescription(),
                 entity.getRating(),
                 entity.getMultiplayer(),
-                entity.getUpdatedAt(),
-                entity.getCreatedAt(),
                 null);
     }
 }

@@ -14,6 +14,8 @@ import java.util.Date;
 @Entity
 @Table(name = "games")
 public class Game {
+    public static String VIDEO_URL_PREFIX = "https://www.youtube.com/watch?v=";
+
     public static String MODEL_TYPE = "App\\Models\\Game";
 
     @Id
